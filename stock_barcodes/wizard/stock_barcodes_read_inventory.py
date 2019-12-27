@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import _, fields, models
 from odoo.fields import first
-from odoo.addons import decimal_precision as dp
 from odoo.exceptions import ValidationError
 
 
@@ -17,7 +16,7 @@ class WizStockBarcodesReadInventory(models.TransientModel):
     )
     inventory_product_qty = fields.Float(
         string='Inventory quantities',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         readonly=True,
     )
 

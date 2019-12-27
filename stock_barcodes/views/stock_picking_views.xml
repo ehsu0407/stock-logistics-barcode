@@ -7,11 +7,11 @@
         <field name="arch" type="xml">
             <div name="button_box" position="inside">
                 <button name="action_barcode_scan"
-                    class="oe_stat_button"
-                    icon="fa-barcode"
-                    type="object"
-                    help="Start barcode interface"
-                    states="assigned">
+                        class="oe_stat_button"
+                        icon="fa-barcode"
+                        type="object"
+                        help="Start barcode interface"
+                        states="assigned">
                     <div class="o_form_field o_stat_info">
                         <span class="o_stat_text">Scan barcodes</span>
                     </div>
@@ -24,13 +24,9 @@
         <field name="model">stock.picking.type</field>
         <field name="inherit_id" ref="stock.stock_picking_type_kanban"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[hasclass('o_kanban_card_content')]" position="after">
-                <div class="container o_kanban_card_content o_visible">
-                    <div class="text-center" t-if="['incoming', 'outgoing', 'internal'].indexOf(record.code.raw_value) > -1">
-                        <button name="action_barcode_scan" type="object" class="btn btn-info">
-                            <i class="fa fa-barcode fa-2x"/>
-                        </button>
-                    </div>
+            <xpath expr="//div[hasclass('o_kanban_manage_new')]" position="inside">
+                <div role="menuitem" t-if="['incoming', 'outgoing', 'internal'].indexOf(record.code.raw_value) > -1">
+                    <a name="action_barcode_scan" type="object">Scanner Session</a>
                 </div>
             </xpath>
         </field>

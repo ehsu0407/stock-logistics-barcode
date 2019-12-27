@@ -5,7 +5,6 @@ from odoo import api, _, fields, models
 from odoo.tools.float_utils import float_compare
 from odoo.exceptions import ValidationError
 from odoo.fields import first
-from odoo.addons import decimal_precision as dp
 
 _logger = logging.getLogger(__name__)
 
@@ -28,7 +27,7 @@ class WizStockBarcodesReadPicking(models.TransientModel):
     )
     picking_product_qty = fields.Float(
         string='Picking quantities',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         readonly=True,
     )
     picking_type_code = fields.Selection([
@@ -291,17 +290,17 @@ class WizCandidatePicking(models.TransientModel):
     )
     product_qty_reserved = fields.Float(
         'Reserved', compute='_compute_picking_quantity',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         readonly=True,
     )
     product_uom_qty = fields.Float(
         'Demand', compute='_compute_picking_quantity',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         readonly=True,
     )
     product_qty_done = fields.Float(
         'Done', compute='_compute_picking_quantity',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
         readonly=True,
     )
     # For reload kanban view

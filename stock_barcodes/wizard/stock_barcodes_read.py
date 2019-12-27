@@ -1,7 +1,6 @@
 # Copyright 2019 Sergio Teruel <sergio.teruel@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import _, api, fields, models
-from odoo.addons import decimal_precision as dp
 
 
 class WizStockBarcodesRead(models.AbstractModel):
@@ -35,10 +34,10 @@ class WizStockBarcodesRead(models.AbstractModel):
     )
     packaging_qty = fields.Float(
         string='Package Qty',
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
     )
     product_qty = fields.Float(
-        digits=dp.get_precision('Product Unit of Measure'),
+        digits='Product Unit of Measure',
     )
     manual_entry = fields.Boolean(
         string='Manual entry data',
